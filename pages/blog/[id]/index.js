@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 const blog = ({ blog }) => {
   return (
     <>
+      <Link href="/">Go back...</Link>
       <h1>{blog.title}</h1>
       <p>{blog.body}</p>
     </>
