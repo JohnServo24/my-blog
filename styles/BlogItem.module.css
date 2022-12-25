@@ -1,0 +1,14 @@
+.blogItem {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  transition: 0.2s;
+}
+
+.blogItem h1 {
+  font-size: 1.5rem;
+}
+
+.blogItem:hover {
+  box-shadow: var(--box-shadow);
+}
