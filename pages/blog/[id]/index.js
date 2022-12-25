@@ -1,12 +1,13 @@
+import blogStyles from "../../../styles/Blog.module.css";
 import Link from "next/link";
 
 const blog = ({ blog }) => {
   return (
-    <>
+    <article className={blogStyles.blog}>
       <Link href="/">Go back...</Link>
       <h1>{blog.title}</h1>
       <p>{blog.body}</p>
-    </>
+    </article>
   );
 };
 
