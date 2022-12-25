@@ -3,10 +3,10 @@ import BlogList from "../components/BlogList";
 
 const Home = ({ blogs }) => {
   return (
-    <div>
+    <>
       <Header />
       <BlogList blogs={blogs} />
-    </div>
+    </>
   );
 };
 

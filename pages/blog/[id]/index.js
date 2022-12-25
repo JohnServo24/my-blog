@@ -1,9 +1,9 @@
 const blog = ({ blog }) => {
   return (
-    <main>
+    <>
       <h1>{blog.title}</h1>
       <p>{blog.body}</p>
-    </main>
+    </>
   );
 };
 
