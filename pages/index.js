@@ -13,7 +13,8 @@ const Home = ({ blogs }) => {
 export const getStaticProps = async () => {
   const baseUrl = process.env.BASE_URL;
   const res = await fetch(`${baseUrl}/api/blog`);
-  const blogs = await res.json();
+  const resFormatted = await res.json();
+  const blogs = resFormatted.data;
 
   return {
     props: {

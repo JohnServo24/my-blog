@@ -19,10 +19,12 @@ const blog = ({ blog }) => {
 
 export const getStaticProps = async (context) => {
   const baseUrl = process.env.BASE_URL;
-  const blogID = context.params.id;
+  const slug = context.params.slug;
 
-  const res = await fetch(`${baseUrl}/api/blog/${blogID}`);
-  const blog = await res.json();
+  const res = await fetch(`${baseUrl}/api/blog/`);
+  const resFormatted = await res.json();
+  const blogs = resFormatted.data;
+  const blog = blogs.find((blog) => blog.slug === slug);
 
   return {
     props: {
@@ -33,12 +35,13 @@ export const getStaticProps = async (context) => {
 
 export const getStaticPaths = async () => {
   const baseUrl = process.env.BASE_URL;
-  const res = await fetch(`${baseUrl}/api/blog`);
-  const blogs = await res.json();
+  const res = await fetch(`${baseUrl}/api/blog/`);
+  const resFormatted = await res.json();
+  const blogs = resFormatted.data;
 
-  const blogIDs = blogs.map((blog) => blog.id);
-  const paths = blogIDs.map((blogID) => ({
-    params: { id: blogID.toString() },
+  const slugs = blogs.map((blog) => blog.slug);
+  const paths = slugs.map((slug) => ({
+    params: { slug: slug.toString() },
   }));
 
   return {
