@@ -1,11 +1,14 @@
 import BlogItem from "./BlogItem";
+import BlogItemStyles from "../styles/BlogItem.module.css";
 
 const BlogList = ({ blogs }) => {
   return (
     <>
       <ul>
         {blogs.map((blog) => (
-          <BlogItem key={blog.id} blog={blog} />
+          <li className={BlogItemStyles.blogItem}>
+            <BlogItem key={blog.id} blog={blog} />
+          </li>
         ))}
       </ul>
     </>

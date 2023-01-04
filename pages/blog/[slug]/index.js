@@ -21,6 +21,7 @@ const blog = ({ blog }) => {
 
 export const getStaticProps = async (context) => {
   const slug = context.params.slug;
+
   const blogs = await getAllBlogs();
   const blog = blogs.find((blog) => blog.slug === slug);
 
