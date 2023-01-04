@@ -1,7 +1,9 @@
-import blogStyles from "../../../styles/Blog.module.css";
-
 import Link from "next/link";
 import Meta from "../../../components/Meta";
+
+import getAllBlogs from "../../../utils/getAllBlogs";
+
+import blogStyles from "../../../styles/Blog.module.css";
 
 const blog = ({ blog }) => {
   return (
@@ -18,12 +20,8 @@ const blog = ({ blog }) => {
 };
 
 export const getStaticProps = async (context) => {
-  const baseUrl = process.env.BASE_URL;
   const slug = context.params.slug;
-
-  const res = await fetch(`${baseUrl}/api/blog/`);
-  const resFormatted = await res.json();
-  const blogs = resFormatted.data;
+  const blogs = await getAllBlogs();
   const blog = blogs.find((blog) => blog.slug === slug);
 
   return {
@@ -34,10 +32,7 @@ export const getStaticProps = async (context) => {
 };
 
 export const getStaticPaths = async () => {
-  const baseUrl = process.env.BASE_URL;
-  const res = await fetch(`${baseUrl}/api/blog/`);
-  const resFormatted = await res.json();
-  const blogs = resFormatted.data;
+  const blogs = await getAllBlogs();
 
   const slugs = blogs.map((blog) => blog.slug);
   const paths = slugs.map((slug) => ({

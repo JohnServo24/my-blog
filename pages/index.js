@@ -1,6 +1,8 @@
 import Header from "../components/Header";
 import BlogList from "../components/BlogList";
 
+import getAllBlogs from "../utils/getAllBlogs";
+
 const Home = ({ blogs }) => {
   return (
     <>
@@ -11,10 +13,7 @@ const Home = ({ blogs }) => {
 };
 
 export const getStaticProps = async () => {
-  const baseUrl = process.env.BASE_URL;
-  const res = await fetch(`${baseUrl}/api/blog`);
-  const resFormatted = await res.json();
-  const blogs = resFormatted.data;
+  const blogs = await getAllBlogs();
 
   return {
     props: {
