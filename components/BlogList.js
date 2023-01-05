@@ -6,8 +6,8 @@ const BlogList = ({ blogs }) => {
     <>
       <ul>
         {blogs.map((blog) => (
-          <li className={BlogItemStyles.blogItem}>
-            <BlogItem key={blog.id} blog={blog} />
+          <li key={blog.id} className={BlogItemStyles.blogItem}>
+            <BlogItem blog={blog} />
           </li>
         ))}
       </ul>
