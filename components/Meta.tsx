@@ -1,6 +1,13 @@
+import React from "react";
 import Head from "next/head";
 
-const Meta = ({ title, keywords, description }) => {
+type MetaTypes = {
+  title: string;
+  keywords: string;
+  description: string;
+};
+
+const Meta = ({ title, keywords, description }: MetaTypes) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />

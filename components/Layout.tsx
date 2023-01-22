@@ -1,6 +1,7 @@
+import React, { PropsWithChildren } from "react";
 import Meta from "./Meta";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Meta />
