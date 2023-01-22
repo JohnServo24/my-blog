@@ -12,7 +12,7 @@ type BlogProps = {
 const Blog = async ({ params }: BlogProps) => {
   const blog: BlogType = await getBlogItem(params.slug);
 
-  if (!blog?.title) return notFound();
+  if (!blog) return notFound();
 
   return (
     <>

@@ -9,7 +9,7 @@ type BlogProps = {
 export default async function Head({ params }: BlogProps) {
   const blog = await getBlogItem(params.slug);
 
-  if (!blog?.title) return "John's blog";
+  if (!blog) return <title>"John's blog"</title>;
 
   return (
     <>
