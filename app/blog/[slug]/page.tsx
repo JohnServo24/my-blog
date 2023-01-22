@@ -1,6 +1,7 @@
 import React from "react";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import getBlogItem from "../../../utils/getBlogItem";
+import { BlogType } from "../../../typings";
 
 type BlogProps = {
   params: {
@@ -9,14 +10,15 @@ type BlogProps = {
 };
 
 const Blog = async ({ params }: BlogProps) => {
-  const blog = await getBlogItem(params.slug);
+  const blog: BlogType = await getBlogItem(params.slug);
+
+  if (!blog?.title) return notFound();
 
   return (
-    <article>
-      <Link href="/">Go back...</Link>
+    <>
       <h1>{blog.title}</h1>
       <p>{blog.body}</p>
-    </article>
+    </>
   );
 };
 
