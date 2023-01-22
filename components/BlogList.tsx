@@ -1,27 +1,19 @@
 import React from "react";
+import { BlogType } from "../typings";
+import getAllBlogs from "../utils/getAllBlogs";
 import BlogItem from "./BlogItem";
 
-type BlogsType = {
-  blogs: {
-    id: number;
-    slug: string;
-    title: string;
-    excerpt: string;
-    body: string;
-  }[];
-};
+const BlogList = async () => {
+  const blogs: BlogType[] = await getAllBlogs();
 
-const BlogList = ({ blogs }: BlogsType) => {
   return (
-    <>
-      <ul>
-        {blogs.map((blog) => (
-          <li key={blog.id}>
-            <BlogItem blog={blog} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {blogs.map((blog: BlogType) => (
+        <li key={blog.id}>
+          <BlogItem blog={blog} />
+        </li>
+      ))}
+    </ul>
   );
 };
 

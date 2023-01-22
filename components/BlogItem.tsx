@@ -1,14 +1,9 @@
 import React from "react";
+import { BlogType } from "../typings";
 import Link from "next/link";
 
 type BlogItemProps = {
-  blog: {
-    id: number;
-    slug: string;
-    title: string;
-    excerpt: string;
-    body: string;
-  };
+  blog: BlogType;
 };
 
 const BlogItem = ({ blog }: BlogItemProps) => {
