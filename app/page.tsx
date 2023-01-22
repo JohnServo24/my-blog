@@ -2,7 +2,7 @@ import React from "react";
 import BlogList from "../components/BlogList";
 import Header from "../components/Header";
 
-const Home = async () => {
+const Home = () => {
   return (
     <>
       <Header />
