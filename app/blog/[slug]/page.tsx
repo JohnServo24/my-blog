@@ -2,6 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import getBlogItem from "../../../utils/getBlogItem";
 import { BlogType } from "../../../typings";
+import getAllBlogs from "../../../utils/getAllBlogs";
 
 type BlogProps = {
   params: {
@@ -21,5 +22,12 @@ const Blog = async ({ params }: BlogProps) => {
     </>
   );
 };
+
+export async function generateStaticParams() {
+  const blogs: BlogType[] = await getAllBlogs();
+  const params = blogs.map((blog: BlogType) => ({ slug: blog.slug }));
+
+  return params;
+}
 
 export default Blog;
