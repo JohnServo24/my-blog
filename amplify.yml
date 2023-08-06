@@ -1,0 +1,21 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+    build:
+      commands:
+        - (env | grep -e BASE_URL >> .env) || true
+        - (env | grep -e NEXT_PUBLIC_ >> .env) || true
+        - (env | grep -e AURORA_ >> .env) || true #remove in v4.0.0
+        - (env | grep -e SECRET_COOKIE_PASSWORD >> .env) || true #remove in v4.0.0
+        - (env | grep -e FRONTEND_URL >> .env) || true #remove in v4.0.0
+        - yarn run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
