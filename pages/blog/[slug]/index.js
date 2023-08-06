@@ -19,30 +19,16 @@ const blog = ({ blog }) => {
   );
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
 
   const blogs = await getAllBlogs();
-  const blog = blogs.find((blog) => blog.slug === slug);
+  const blog = Object.values(blogs).find((blog) => blog.slug === slug);
 
   return {
     props: {
       blog,
     },
-  };
-};
-
-export const getStaticPaths = async () => {
-  const blogs = await getAllBlogs();
-
-  const slugs = blogs.map((blog) => blog.slug);
-  const paths = slugs.map((slug) => ({
-    params: { slug: slug.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false,
   };
 };
 

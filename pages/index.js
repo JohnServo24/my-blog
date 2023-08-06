@@ -12,12 +12,14 @@ const Home = ({ blogs }) => {
   );
 };
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const blogs = await getAllBlogs();
+
+    console.log(blogs)
 
   return {
     props: {
-      blogs,
+      blogs: Object.values(blogs),
     },
   };
 };
